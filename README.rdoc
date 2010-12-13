@@ -1,4 +1,13 @@
 == Sleepy Dragon: Dreamforge
 
+Sleepy Dragon is a new breed of role play gaming: We combine the power of classic pen & paper games with a computer aided system. More Information coming soon.
+
 * {GitHub Repository}[http://github.com/SleepyDragon/dreamforge]
 * {Tracker}[http://sleepydragon.lighthouseapp.com/projects/65931-dreamforge]
+* RDoc.info Page (coming soon)
+* Community (coming soon)
+* Concept (coming soon)
+
+== License
+
+Dreamforge is released under the MIT license.
