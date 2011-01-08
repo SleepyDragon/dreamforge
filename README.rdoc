@@ -4,7 +4,7 @@ Sleepy Dragon is a new breed of role play gaming: We combine the power of classi
 
 * {GitHub Repository}[http://github.com/SleepyDragon/dreamforge]
 * {Tracker}[http://sleepydragon.lighthouseapp.com/projects/65931-dreamforge]
-* RDoc.info Page (coming soon)
+* {RDoc.info Page}[http://rubydoc.info/github/SleepyDragon/dreamforge/]
 * Community (coming soon)
 * Concept (coming soon)
 
