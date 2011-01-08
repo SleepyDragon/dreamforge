@@ -1,3 +1,4 @@
+# The User Model is devise-powered
 class User < ActiveRecord::Base
   devise :database_authenticatable, # encrypts and stores password while signing in
          :registerable, # handles signing up / edit / destroy users through a registration process
