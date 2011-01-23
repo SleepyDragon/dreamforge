@@ -3,5 +3,6 @@ app/models/user.rb e265b7dda24eb1d39509ea6e59b05d21aaab882f
 app/controllers/static_pages_controller.rb 50a0711bcb4806c18082e5b7ef7fb791a1ebce0c
 app/controllers/application_controller.rb 2036468398e54b3fc8af23cb6f9e1716293320eb
 app/helpers/static_pages_helper.rb 2a8772e4e028f88fe4f00812eb13dd5cc0dc95a9
-app/models/forum.rb 79483d77b19cc6394c8cc905f02b39896b643006
+app/models/forum.rb d7b0863daa064fdfec4b152309aa57be8fdf894e
 app/models/category.rb ddce55171537f5357c1c4af647a4cf006afa554a
+app/models/topic.rb d82a7bdf0f92b7ad077dae40a3b8811f0f6e7d8a
