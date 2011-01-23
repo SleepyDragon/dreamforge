@@ -1,9 +1,10 @@
 # @attr [String] name is shown in the community, required
 # @attr [String] subtitle is shown in the community, optional
 
-class Category < ActiveRecord::Base
+class Forum < ActiveRecord::Base
   validates_presence_of :name
+  validates_presence_of :category
   
-  has_many :forums, :dependent => :destroy
+  belongs_to :category
   
 end
