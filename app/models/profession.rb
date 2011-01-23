@@ -1,3 +1,6 @@
+# @attr [String] name, required
+# @attr [Text] description, required
+
 class Profession < Gist
   
   validates_format_of :type, :with => /\AProfession\z/

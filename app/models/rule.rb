@@ -1,3 +1,6 @@
+# @attr [String] name, required
+# @attr [Text] description, required
+
 class Rule < Gist
   
   validates_format_of :type, :with => /\ARule\z/

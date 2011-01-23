@@ -1,3 +1,7 @@
+# @attr [String] name, required
+# @attr [Text] description, required
+# @attr [Hash] actions, required
+
 class Ability < Gist
   
   validates_format_of :type, :with => /\AAbility\z/

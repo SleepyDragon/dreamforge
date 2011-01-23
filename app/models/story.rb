@@ -1,3 +1,7 @@
+# @attr [String] name, required
+# @attr [Text] description, required
+# @attr [String] fictional_author, required
+
 class Story < Gist
   
   validates_format_of :type, :with => /\AStory\z/
