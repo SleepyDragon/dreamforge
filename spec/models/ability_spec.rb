@@ -32,6 +32,7 @@ describe Ability do
   
   it "should serialize the actions hash" do
     ability_with_name_and_description_and_actions.actions[:my_action] = "My Value"
+    ability_with_name_and_description_and_actions.save!
     ability_with_name_and_description_and_actions.actions.should have_key(:my_action)
     ability_with_name_and_description_and_actions.actions.should have_value("My Value")
   end
