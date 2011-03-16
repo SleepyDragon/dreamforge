@@ -11,4 +11,13 @@ class Post < ActiveRecord::Base
   belongs_to :topic
   belongs_to :user
   
+  
+  def to_html
+    RDiscount.new(content).to_html
+  end
+  
+  def Post.preview(markup_text)
+    RDiscount.new(markup_text).to_html
+  end
+  
 end
