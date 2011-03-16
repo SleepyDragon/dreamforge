@@ -74,6 +74,7 @@ GEM
       rake (>= 0.8.4)
       thor (~> 0.14.0)
     rake (0.8.7)
+    rdiscount (1.6.8)
     rspec (2.0.1)
       rspec-core (~> 2.0.1)
       rspec-expectations (~> 2.0.1)
@@ -106,6 +107,7 @@ DEPENDENCIES
   haml
   jquery-rails (>= 0.2.6)
   rails (= 3.0.1)
+  rdiscount
   rspec
   rspec-rails (~> 2.0.1)
   sqlite3-ruby

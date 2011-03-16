@@ -7,6 +7,7 @@ gem 'jquery-rails', '>= 0.2.6'
 gem 'formtastic', '~> 1.1.0'
 gem 'devise'
 gem 'cancan'
+gem 'rdiscount' # Markup
 gem "will_paginate", "~> 3.0.pre2"
 
 group :development, :test do
