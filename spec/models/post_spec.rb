@@ -30,12 +30,13 @@ describe Post do
     
     let(:post) { Post.new(:topic => existing_topic, :user => existing_user, :content => simple_text) }
     let(:simple_text) { "Hello world!" }
+    let(:text_with_html) { "<h1>Hi</h1>" }
     
-    it "provides an to_html method" do
+    it "provides a to_html method" do
       post.should respond_to(:to_html)
     end
     
-    it "generates HTML from prosa" do
+    it "generates HTML from markdown-formatted text" do
       post.to_html.should == "<p>#{simple_text}</p>\n"
     end
     
@@ -44,7 +45,9 @@ describe Post do
       Post.preview(simple_text).should == post.to_html
     end
     
-    pending "should escape HTML input"
+    it "should escape HTML userinput" do
+      Post.preview(text_with_html).should == "<p>&lt;h1>Hi&lt;/h1></p>\n"
+    end
   end
   
 end

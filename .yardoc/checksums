@@ -9,7 +9,7 @@ app/models/topic.rb 51ac8dd228ede7285ca85b0c71a9bf9826a26ead
 app/models/mod.rb bad74a42ea1e0c2b2dda2795effc2550a4e971bb
 app/models/rule.rb 12ed2109aef9345ad0458252c00cf9b2ffa0c8ac
 app/models/race.rb 3815e159bdaab293918e80834c17d29a0beba243
-app/models/post.rb 067464da58fac81ceaa5d470f3374e34baca7561
+app/models/post.rb 7256f9eca89b20cc7b69e660fce1c7cde6339e65
 app/models/gist.rb a6340e5aad747342bdac1508b4c6227444a6708f
 app/models/story.rb 9fba5bb6209d7102d4f6c0c6180335772ab68370
 app/models/ability.rb be11d15c61be079a1e2b246e583b6910ea61a0f5
