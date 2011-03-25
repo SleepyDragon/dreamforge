@@ -13,12 +13,12 @@ class Post < ActiveRecord::Base
   
   # @return [Text] post formatted as HTML.
   def to_html
-    Post.preview(content)
+    Post.to_html(content)
   end
   
-  # @param [Text] text the content of a post you would like to generate a preview for.
+  # @param [Text] text the text you would like to transform to HTML.
   # @return [Text] post formatted as HTML.
-  def Post.preview(text)
+  def Post.to_html(text)
     RDiscount.new(text, :filter_html).to_html
   end
   
