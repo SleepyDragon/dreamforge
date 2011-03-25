@@ -15,4 +15,20 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   
   has_many :posts
+  
+  before_destroy :make_undead
+  
+  
+  def zombie?
+    read_attribute(:zombie)
+  end
+  
+  
+  private
+    
+  def make_undead
+    write_attribute(:zombie, true)
+    # delete email, , password, cookies, ...
+    return false # prevent from deletion
+  end
 end
