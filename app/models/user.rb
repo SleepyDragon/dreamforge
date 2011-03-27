@@ -12,17 +12,18 @@ class User < ActiveRecord::Base
          :confirmable # email confirm process
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :short_description
   
   has_many :posts
   
   before_destroy :make_undead
   
+  validates :name, :presence => true,
+                   :uniqueness => { :case_sensitive => false }
   
   def zombie?
     read_attribute(:zombie)
   end
-  
   
   private
     

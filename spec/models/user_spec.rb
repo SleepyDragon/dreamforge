@@ -1,84 +1,107 @@
 require 'spec_helper'
 
 describe User do
-  # TODO: user should require a (case-insensitive) unique username
+  let(:user_without_email) { User.new(:name => "Nickname", :password => "foobar", :password_confirmation => "foobar") }
+  let(:user_without_password) { User.new(:name => "Nickname", :email => "foo@example.com", :password_confirmation => "foobar") }
+  let(:user_without_correct_password_confirmation) { User.new(:name => "Nickname", :email => "foo@example.com", :password => "foobar", :password_confirmation => "baz") }
+  let(:user_without_name) { User.new(:email => "foo@example.com", :password => "foobar", :password_confirmation => "foobar") }
+  let(:user_with_all_information) { User.new(:name => "Nickname", :email => "foo@example.com", :password => "foobar", :password_confirmation => "foobar") }
   
-  let(:user_without_email) { User.new(:password => "foobar", :password_confirmation => "foobar") }
-  let(:user_without_password) { User.new(:email => "foo@example.com", :password_confirmation => "foobar") }
-  let(:user_without_correct_password_confirmation) { User.new(:email => "foo@example.com", :password => "foobar", :password_confirmation => "baz") }
-  let(:user_with_all_information) { User.new(:email => "foo@example.com", :password => "foobar", :password_confirmation => "foobar") }
-  
-  context "email-adress" do
-    it "requires an email" do
-      user_without_email.should_not be_valid
-    end
-
-    it "accepts a valid email-address" do
-      valid_email_addresses = ["test@example.com", "fore.last@test.com"]
-
-      valid_email_addresses.each do |email|
-        user_without_email.email = email
-        user_without_email.should be_valid
+  context "validations" do
+    context "nickname" do
+      it "requires a nickname" do
+        user_without_name.should_not be_valid
       end
-    end
 
-    it "rejects an invalid email-address" do
-      invalid_email_addresses = ["test@example", "@example.com", "hei-o-p#ei@example.com"]
+      it "rejects new users with a nickname that's already taken" do
+        user_with_all_information.save
 
-      invalid_email_addresses.each do |email|
-        user_without_email.email = email
-        user_without_email.should_not be_valid
+        lambda do
+          User.create(:name => "Nickname", :email => "another_email@example.com", :password => "foobaz", :password_confirmation => "foobaz")
+        end.should_not change(User, :count).by(1)
       end    
-    end
-    
-    it "rejects new users with an email that's already taken" do
-      user_with_all_information.save
-      
-      lambda do
-        user_with_same_email = User.create(:email => "foo@example.com", :password => "foobaz", :password_confirmation => "foobaz")
-      end.should_not change(User, :count).by(1)
-    end
-    
-    it "should ignore the case when comparing email-addresses" do
-      user_with_all_information.save
-      
-      lambda do
-        user_with_same_caseignore_email = User.create(:email => "Foo@ExAmple.COM", :password => "foobaz", :password_confirmation => "foobaz")
-      end.should_not change(User, :count).by(1)
-    end
-  end
 
-  context "password" do
-    it "requires a password" do
-      user_without_password.should_not be_valid
-    end
+      it "should ignore the case when comparing nicknames" do
+        user_with_all_information.save
 
-    it "requires a matching password and password confirmation" do
-      user_without_correct_password_confirmation.should_not be_valid
-    end
-
-    it "rejects passwords that are too short" do
-      short_pw = 'a' * 5
-      user_without_password.password = short_pw
-      user_without_password.password_confirmation = short_pw
-      
-      user_without_password.should_not be_valid
-    end
-    
-    it "accepts passwords that are long enough" do
-      quite_long_passwords = ['a' * 6, 'b' * 8, 'c' * 12]
-      
-      quite_long_passwords.each do |pw|
-        user_without_password.password = pw
-        user_without_password.password_confirmation = pw
-        
-        user_without_password.should be_valid
+        lambda do
+          User.create(:name => "NiCkName", :email => "another_email@example.com", :password => "foobaz", :password_confirmation => "foobaz")
+        end.should_not change(User, :count).by(1)
       end
     end
-  end
-  
-  it "accepts a user with all information" do
-    user_with_all_information.should be_valid
+
+    context "email-adress" do
+      it "requires an email" do
+        user_without_email.should_not be_valid
+      end
+
+      it "accepts a valid email-address" do
+        valid_email_addresses = ["test@example.com", "fore.last@test.com"]
+
+        valid_email_addresses.each do |email|
+          user_without_email.email = email
+          user_without_email.should be_valid
+        end
+      end
+
+      it "rejects an invalid email-address" do
+        invalid_email_addresses = ["test@example", "@example.com", "hei-o-p#ei@example.com"]
+
+        invalid_email_addresses.each do |email|
+          user_without_email.email = email
+          user_without_email.should_not be_valid
+        end    
+      end
+
+      it "rejects new users with an email that's already taken" do
+        user_with_all_information.save
+
+        lambda do
+          User.create(:name => "Unnamed", :email => "foo@example.com", :password => "foobaz", :password_confirmation => "foobaz")
+        end.should_not change(User, :count).by(1)
+      end
+
+      it "should ignore the case when comparing email-addresses" do
+        user_with_all_information.save
+
+        lambda do
+          User.create(:name => "Unnamed", :email => "Foo@ExAmple.COM", :password => "foobaz", :password_confirmation => "foobaz")
+        end.should_not change(User, :count).by(1)
+      end
+    end
+
+    context "password" do
+      it "requires a password" do
+        user_without_password.should_not be_valid
+      end
+
+      it "requires a matching password and password confirmation" do
+        user_without_correct_password_confirmation.should_not be_valid
+      end
+
+      it "rejects passwords that are too short" do
+        short_pw = 'a' * 5
+        user_without_password.password = short_pw
+        user_without_password.password_confirmation = short_pw
+
+        user_without_password.should_not be_valid
+      end
+
+      it "accepts passwords that are long enough" do
+        quite_long_passwords = ['a' * 6, 'b' * 8, 'c' * 12]
+
+        quite_long_passwords.each do |pw|
+          user_without_password.password = pw
+          user_without_password.password_confirmation = pw
+
+          user_without_password.should be_valid
+        end
+      end
+    end
+
+    it "accepts a user with all information" do
+      user_with_all_information.should be_valid
+    end    
   end
   
 end
