@@ -1,4 +1,4 @@
-# @attr [Text] content, required
+# @attr [Text] content, required. Should be written as Markdown.
 # @attr [Topic] topic, required
 # @attr [User] user, required
 
@@ -11,13 +11,15 @@ class Post < ActiveRecord::Base
   belongs_to :topic
   belongs_to :user
   
-  
+  # @return [Text] post formatted as HTML.
   def to_html
-    RDiscount.new(content).to_html
+    Post.to_html(content)
   end
   
-  def Post.preview(markup_text)
-    RDiscount.new(markup_text).to_html
+  # @param [Text] text the text you would like to transform to HTML.
+  # @return [Text] post formatted as HTML.
+  def Post.to_html(text)
+    RDiscount.new(text, :filter_html).to_html
   end
   
 end

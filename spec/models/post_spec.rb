@@ -30,21 +30,34 @@ describe Post do
     
     let(:post) { Post.new(:topic => existing_topic, :user => existing_user, :content => simple_text) }
     let(:simple_text) { "Hello world!" }
+    let(:text_with_html) { "<h1>Hi</h1>" }
     
-    it "provides an to_html method" do
+    it "provides a to_html method" do
       post.should respond_to(:to_html)
     end
     
-    it "generates HTML from prosa" do
+    it "generates HTML from markdown-formatted text" do
       post.to_html.should == "<p>#{simple_text}</p>\n"
     end
     
     it "provides a preview" do
-      # Does not need a user or topic.
-      Post.preview(simple_text).should == post.to_html
+      # Does not need a user or topic, hence classmethod.
+      Post.to_html(simple_text).should == post.to_html
     end
     
-    pending "should escape HTML input"
+    it "should escape HTML userinput" do
+      Post.to_html(text_with_html).should == "<p>&lt;h1>Hi&lt;/h1></p>\n"
+    end
+    
+    context "post content" do
+      
+      let(:content_with_link) { "This is a [link](http://example.com 'alt text')." }
+      
+      it "supports hyperlinks" do
+        Post.to_html(content_with_link).should == "<p>This is a <a href=\"http://example.com\" title=\"alt text\">link</a>.</p>\n"
+      end
+      
+    end
   end
   
 end
