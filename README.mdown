@@ -3,7 +3,7 @@ Sleepy Dragon: Dreamforge
 
 Sleepy Dragon is a new breed of role play gaming: We combine the power of classic pen & paper games with a computer aided system. Dreamforge is our community system, intended as a place for our players to exchange information and to shape the world as they desire it to be. The world created by the community will be under a Creative Commons licence, so it can be reused in other projects (like games or books) as long as the source is mentioned. In order to achieve this goal, the community system needs to be tightly integrated into the process of writing rules, describing races like dwarfes and so on. Therefore we need a custom solution. This is what dreamforge is all about. 
 
-The concept for the game itself is released under a copyright licence, but usage is granted to other open-source solutions for simply mentioning the origin of the concept. Currently this document is only available in german, because our main (and for now: only) community will create a world in german. We're absolutly happy about everyone who wants to create his own community (in any language), so we release our work on the infrastructure as open-source. Feel free to fork and send pull requests.
+The concept for the game itself is released under a copyright licence, but usage is granted to other open-source solutions for simply mentioning the origin of the concept. Currently this document is only available in German, because our main (and for now: only) community will create a world in German. We're absolutly happy about everyone who wants to create his own community (in any language), so we release our work on the infrastructure as open-source. Feel free to fork and send pull requests.
 
 Further Information
 -------------------
