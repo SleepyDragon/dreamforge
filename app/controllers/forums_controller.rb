@@ -5,7 +5,7 @@ class ForumsController < ApplicationController
   end
   
   def show
-    @category = Forum.find(params[:id])
+    @forum = Forum.find(params[:id])
   end
   
 end

@@ -33,8 +33,7 @@ describe ForumsController do
     
     before :each do
       
-      @category = stub_model(Category, :name => "First Category", :subtitle => "My Subtitle")
-      @forum = stub_model(Forum, :name => "First Category", :subtitle => "My Subtitle", :category => @category)
+      @forum = mock_model(Forum, :name => "First Category", :subtitle => "My Subtitle")
       Forum.stub!(:find).and_return(@forum)
       
     end
@@ -50,6 +49,13 @@ describe ForumsController do
       
       get :show, :id => 1
       response.should render_template(:show)
+      
+    end
+    
+    it "should save the forum in the assigns array" do
+      
+      get :show, :id => 1
+      assigns[:forum].should be(@forum)
       
     end
     
