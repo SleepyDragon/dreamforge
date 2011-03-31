@@ -2,8 +2,6 @@ require 'spec_helper'
 
 describe ForumsController do
   
-  # let(:valid_category) { Category.new(:name => 'First Forum', :subtitle => 'And my Subtitle') }
-  
   describe 'index' do
     
     it "should be succesful" do
@@ -26,6 +24,32 @@ describe ForumsController do
       Category.stub!(:all).and_return([@category])
       get :index
       assigns[:categories].should include(@category)
+      
+    end
+    
+  end
+  
+  describe 'show' do
+    
+    before :each do
+      
+      @category = stub_model(Category, :name => "First Category", :subtitle => "My Subtitle")
+      @forum = stub_model(Forum, :name => "First Category", :subtitle => "My Subtitle", :category => @category)
+      Forum.stub!(:find).and_return(@forum)
+      
+    end
+    
+    it "should be succesful" do
+      
+      get :show, :id => 1
+      response.should be_success
+      
+    end
+    
+    it "should render the show template" do
+      
+      get :show, :id => 1
+      response.should render_template(:show)
       
     end
     
