@@ -1,5 +1,15 @@
 %h2= @forum.name
 
-%ul.breadcrumbs
+%ol.breadcrumbs
+  %li= link_to t(:community), '/forums'
   %li= @forum.category.name
   %li= @forum.name
+
+%table
+  %thead
+    %tr
+      %td= t(:topics)
+  %tbody
+    - @forum.topics.each do |topic|
+      %tr
+        %td= topic.title
