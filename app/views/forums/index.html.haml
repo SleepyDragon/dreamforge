@@ -2,4 +2,8 @@
   %table
     %thead
       %tr
-        %td= category.name      
+        %td= category.name
+    %tbody
+      - category.forums.each do |forum|
+        %tr
+          %td= forum.name
