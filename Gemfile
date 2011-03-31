@@ -8,10 +8,12 @@ gem 'formtastic', '~> 1.1.0'
 gem 'devise'
 gem 'cancan'
 gem 'rdiscount' # Markdown
-gem "will_paginate", "~> 3.0.pre2"
+gem 'will_paginate', '~> 3.0.pre2'
 
 group :development, :test do
   gem 'yard'
   gem 'rspec'
-  gem "rspec-rails", "~> 2.0.1"
+  gem 'rspec-rails', '~> 2.0.1'
+  gem 'webrat' # Better Matchers for the View Specs
+  gem 'syntax' # Highlighting in TextMate's RSpec Output
 end
