@@ -6,4 +6,4 @@
     %tbody
       - category.forums.each do |forum|
         %tr
-          %td= forum.name
+          %td= link_to forum.name, forum

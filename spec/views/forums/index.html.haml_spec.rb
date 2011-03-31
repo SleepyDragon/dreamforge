@@ -18,11 +18,17 @@ describe "forums/index.html.haml" do
     
   end
   
-  it "should list all corresponding models" do
+  it "should list all corresponding forums" do
     
     rendered.should have_selector('tbody tr') do |tbody|
       tbody.should contain(@first_forum.name)
     end
+    
+  end
+  
+  it "should link to the correct forum" do
+    
+    rendered.should have_selector('tbody td a', :content => @first_forum.name, :href => "/forums/#{@first_forum.to_param}")
     
   end
   

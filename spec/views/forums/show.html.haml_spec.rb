@@ -16,7 +16,7 @@ describe "forums/show.html.haml" do
     
   end
   
-  it "should display the correct breadcrumb" do
+  it "should display the correct breadcrumbs" do
     
     rendered.should have_selector('.breadcrumbs') do |breadcrumb|
       breadcrumb.should have_selector('li', :content => @forum_that_should_be_shown.name)
