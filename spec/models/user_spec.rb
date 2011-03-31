@@ -16,17 +16,17 @@ describe User do
       it "rejects new users with a nickname that's already taken" do
         user_with_all_information.save
 
-        lambda do
+        expect do
           User.create(:name => "Nickname", :email => "another_email@example.com", :password => "foobaz", :password_confirmation => "foobaz")
-        end.should_not change(User, :count).by(1)
+        end.to_not change(User, :count).by(1)
       end    
 
       it "should ignore the case when comparing nicknames" do
         user_with_all_information.save
 
-        lambda do
+        expect do
           User.create(:name => "NiCkName", :email => "another_email@example.com", :password => "foobaz", :password_confirmation => "foobaz")
-        end.should_not change(User, :count).by(1)
+        end.to_not change(User, :count).by(1)
       end
     end
 
@@ -56,17 +56,17 @@ describe User do
       it "rejects new users with an email that's already taken" do
         user_with_all_information.save
 
-        lambda do
+        expect do
           User.create(:name => "Unnamed", :email => "foo@example.com", :password => "foobaz", :password_confirmation => "foobaz")
-        end.should_not change(User, :count).by(1)
+        end.to_not change(User, :count).by(1)
       end
 
       it "should ignore the case when comparing email-addresses" do
         user_with_all_information.save
 
-        lambda do
+        expect do
           User.create(:name => "Unnamed", :email => "Foo@ExAmple.COM", :password => "foobaz", :password_confirmation => "foobaz")
-        end.should_not change(User, :count).by(1)
+        end.to_not change(User, :count).by(1)
       end
     end
 
