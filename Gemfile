@@ -18,4 +18,6 @@ group :development, :test do
   gem 'syntax' # Highlighting in TextMate's RSpec Output
   gem "ZenTest", "~> 4.4.2"
   gem "autotest-rails", "~> 4.1.0"
+  gem "autotest-fsevent" # Instead of polling your files all the time, wait for push notifications
+  gem "autotest-growl" # autotests sends growl notifications 
 end
