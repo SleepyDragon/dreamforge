@@ -5,7 +5,8 @@ describe Topic do
   let(:topic_without_a_title) { Topic.new(:forum => valid_forum) }
   let(:topic_with_a_title_and_forum) { Topic.new(:title => "my name", :forum => valid_forum) }
   let(:valid_forum) { Forum.new(:name => "some foxy name") }
-  let(:valid_post) { Post.new(:content => "indeed, indeed", :topic => topic_with_a_title_and_forum) }
+  let(:valid_user) { User.new() }
+  let(:valid_post) { Post.new(:content => "indeed, indeed", :topic => topic_with_a_title_and_forum, :user => valid_user) }
   
   it "does require a title" do
     topic_without_a_title.should_not be_valid

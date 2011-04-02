@@ -12,8 +12,10 @@ gem 'will_paginate', '~> 3.0.pre2'
 
 group :development, :test do
   gem 'yard'
-  gem 'rspec'
-  gem 'rspec-rails', '~> 2.0.1'
+  gem 'rspec', '~> 2.5.0'
+  gem 'rspec-rails', '~> 2.5.0'
   gem 'webrat' # Better Matchers for the View Specs
   gem 'syntax' # Highlighting in TextMate's RSpec Output
+  gem "ZenTest", "~> 4.4.2"
+  gem "autotest-rails", "~> 4.1.0"
 end
