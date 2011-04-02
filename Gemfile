@@ -20,4 +20,5 @@ group :development, :test do
   gem "autotest-rails", "~> 4.1.0"
   gem "autotest-fsevent" # Instead of polling your files all the time, wait for push notifications
   gem "autotest-growl" # autotests sends growl notifications 
+  gem 'spork', '~> 0.9.0.rc' # make specs faster
 end
