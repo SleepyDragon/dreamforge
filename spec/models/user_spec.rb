@@ -104,4 +104,29 @@ describe User do
     end    
   end
   
+  context "on delete" do
+    
+    it "should not erase the entry from the database" do
+      expect do
+        user_with_all_information.destroy
+      end.to_not change(User, :count).by(-1)
+    end
+    
+    it "should set the zombie-attribute to true" do
+      user_with_all_information.zombie?.should be_false
+      user_with_all_information.destroy
+      user_with_all_information.zombie?.should be_true
+    end
+    
+    it "it should keep the name" do
+      user_with_all_information.destroy
+      user_with_all_information.name.should == "Nickname"
+    end
+    
+    it "should erase the email" do
+      user_with_all_information.destroy
+      user_with_all_information.email.should be_nil
+    end
+  end
+  
 end

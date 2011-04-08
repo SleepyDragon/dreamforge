@@ -29,7 +29,15 @@ class User < ActiveRecord::Base
     
   def make_undead
     write_attribute(:zombie, true)
-    # delete email, , password, cookies, ...
-    return false # prevent from deletion
+    write_attribute(:email, nil)
+    
+    save(:validate => false)
+    
+    # self.save
+    
+    # User.update(self, :email => nil, 
+    #                   :short_description => nil)
+    
+    return false
   end
 end
