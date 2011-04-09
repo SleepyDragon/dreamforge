@@ -127,6 +127,14 @@ describe User do
       user_with_all_information.destroy
       user_with_all_information.email.should be_nil
     end
+    
+    it "should erase the password" do
+      user_with_all_information.destroy
+      user_with_all_information.password.should be_nil
+    end
+    
+    pending "should erase the short description"
+    pending "should erase the encrypted password"
   end
   
 end

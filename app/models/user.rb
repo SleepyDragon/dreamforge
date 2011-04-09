@@ -25,18 +25,16 @@ class User < ActiveRecord::Base
     read_attribute(:zombie)
   end
   
+  
   private
     
   def make_undead
     write_attribute(:zombie, true)
     write_attribute(:email, nil)
     
+    @password = nil
+    
     save(:validate => false)
-    
-    # self.save
-    
-    # User.update(self, :email => nil, 
-    #                   :short_description => nil)
     
     return false
   end
