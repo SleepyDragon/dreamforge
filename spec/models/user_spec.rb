@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe User do
+  
   let(:user_without_email) { User.new(:name => "Nickname", :password => "foobar", :password_confirmation => "foobar") }
   let(:user_without_password) { User.new(:name => "Nickname", :email => "foo@example.com", :password_confirmation => "foobar") }
   let(:user_without_correct_password_confirmation) { User.new(:name => "Nickname", :email => "foo@example.com", :password => "foobar", :password_confirmation => "baz") }
@@ -105,36 +106,43 @@ describe User do
   end
   
   context "on delete" do
+    before :each do
+      @user = user_with_all_information
+      @user.save
+    end
     
     it "should not erase the entry from the database" do
       expect do
-        user_with_all_information.destroy
+        @user.destroy
       end.to_not change(User, :count).by(-1)
     end
     
     it "should set the zombie-attribute to true" do
-      user_with_all_information.zombie?.should be_false
-      user_with_all_information.destroy
-      user_with_all_information.zombie?.should be_true
+      @user.zombie?.should be_false
+      @user.destroy
+      @user.zombie?.should be_true
     end
     
     it "it should keep the name" do
-      user_with_all_information.destroy
-      user_with_all_information.name.should == "Nickname"
+      @user.destroy
+      @user.name.should == "Nickname"
     end
     
     it "should erase the email" do
-      user_with_all_information.destroy
-      user_with_all_information.email.should be_nil
+      @user.destroy
+      @user.email.should be_nil
     end
     
     it "should erase the password" do
-      user_with_all_information.destroy
-      user_with_all_information.password.should be_nil
+      @user.destroy
+      @user.password.should be_nil
     end
     
-    pending "should erase the short description"
-    pending "should erase the encrypted password"
+    it "should erase the password confirmation" do
+      @user.destroy
+      @user.password_confirmation.should be_nil
+    end
+    
   end
   
 end
