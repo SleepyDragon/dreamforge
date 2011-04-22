@@ -1,5 +1,5 @@
 # The User Model is devise-powered
-# Has eMail, Password, Name, ShortDescription. 
+# Has eMail, Password, Name.
 # TODO: GOOD Documentation
 
 class User < ActiveRecord::Base
@@ -7,9 +7,7 @@ class User < ActiveRecord::Base
          :registerable, # handles signing up / edit / destroy users through a registration process
          :recoverable, # recover password via email
          :rememberable, # cookies
-         :trackable, # tracks sign in count, timestamps and ip adress
-         :validatable, # validate email and password
-         :confirmable # email confirm process
+         :validatable # validate email and password
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name
