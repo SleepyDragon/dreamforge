@@ -1,6 +1,10 @@
 require 'spec_helper'
+require 'devise/test_helpers'
 
 describe "topics/show.html.haml" do
+  let(:user) do
+    stub_model(User, :name => "Peter Parker", :password => "dude")
+  end
   
   before(:each) do
     @category = stub_model(Category, :name => "Our Test Category")
@@ -15,36 +19,72 @@ describe "topics/show.html.haml" do
     assign(:topic, @topic)
     assign(:posts, @posts)
     
-    render
+    assign(:user, nil)
+    @view.stub(:resource).and_return(user)
+    @view.stub(:resource_name).and_return('user')
+    @view.stub(:devise_mapping).and_return(Devise.mappings[:user])
   end
   
-  it "should display the correct headline" do
+  context "not logged-in permissions" do
     
-    rendered.should have_selector('h2', :content => @topic.title)
-    
-  end
-  
-  it "should display the correct breadcrumbs" do
-    
-    rendered.should have_selector('.breadcrumbs') do |breadcrumb|
+    before(:each) do
+      @view.stub!(:current_user).and_return(nil)
+      @view.stub!(:user_signed_in?).and_return(false)
       
-      breadcrumb.should have_selector('li a', :content => t(:community), :href => forums_path)
-      breadcrumb.should have_selector('li', :content => @category.name)
-      breadcrumb.should have_selector('li a', :content => @forum.name, :href => forum_path(@forum))
-      breadcrumb.should have_selector('li', :content => @topic.title)
-      
+      render
+    end
+    
+    it "should display the correct headline" do
+    
+      rendered.should have_selector('h2', :content => @topic.title)
+    
+    end
+    
+    it "should display the correct breadcrumbs" do
+    
+      rendered.should have_selector('.breadcrumbs') do |breadcrumb|
+    
+        breadcrumb.should have_selector('li a', :content => t(:community), :href => forums_path)
+        breadcrumb.should have_selector('li', :content => @category.name)
+        breadcrumb.should have_selector('li a', :content => @forum.name, :href => forum_path(@forum))
+        breadcrumb.should have_selector('li', :content => @topic.title)
+    
+      end
+    
+    end
+    
+    it "should display the first ten posts" do
+    
+      rendered.should have_selector('table.posts tr') do |post|      
+    
+        post.should have_selector('td:last-child') do |content|
+          content.should contain(/Post number \d.*/)
+        end
+    
+      end
+    
+    end
+    
+    
+    it "should not enable you to write a new post" do
+      rendered.should_not have_selector('textarea.new_post')
     end
     
   end
   
-  it "should display the first ten posts" do
+  context "logged-in permissions" do
     
-    rendered.should have_selector('table.posts tr') do |post|      
-        
-      post.should have_selector('td:last-child') do |content|
-        content.should contain(/Post number \d.*/)
-      end
+    before(:each) do
+      assign(:user, user)
       
+      @view.stub!(:current_user).and_return(user)
+      @view.stub!(:user_signed_in?).and_return(true)
+      
+      render
+    end
+    
+    it "should enable you to write a new post" do
+      rendered.should have_selector('textarea.new_post')
     end
     
   end
@@ -52,8 +92,6 @@ describe "topics/show.html.haml" do
   it "should display the corresponding user names"
   
   it "should mark the authors post"
-  
-  it "should enable you to write a new post"
   
   it "should paginate"
   

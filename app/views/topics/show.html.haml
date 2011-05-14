@@ -13,5 +13,10 @@
       %td
         hallo
       %td= raw post.to_html
+
+= current_user
+= user_signed_in?
+- if user_signed_in?
+  %textarea.new_post
       
 /= will_paginate @posts
