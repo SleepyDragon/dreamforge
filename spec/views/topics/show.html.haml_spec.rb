@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'devise/test_helpers'
 
 describe "topics/show.html.haml" do
   let(:user) do
