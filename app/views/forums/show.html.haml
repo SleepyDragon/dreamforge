@@ -12,6 +12,6 @@
   %tbody
     - @topics.each do |topic|
       %tr
-        %td= topic.title
+        %td= link_to topic.title, topic
 
-= will_paginate @topics
+/= will_paginate @topics
