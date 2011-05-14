@@ -52,10 +52,26 @@ describe Post do
     context "post content" do
       
       let(:content_with_link) { "This is a [link](http://example.com 'alt text')." }
+      let(:content_with_italic_text) { "Hello *world*!" }
+      let(:content_with_strong_text) { "Hello **strong** world!" }
+      let(:content_with_quotes) { "Hello quoted text\n>This is quoted  \n>- Sir" }
       
       it "supports hyperlinks" do
         Post.to_html(content_with_link).should == "<p>This is a <a href=\"http://example.com\" title=\"alt text\">link</a>.</p>\n"
       end
+      
+      it "allows to emphasize text" do
+        Post.to_html(content_with_italic_text).should == "<p>Hello <em>world</em>!</p>\n"
+      end
+      
+      it "allows to make text STRONG" do
+        Post.to_html(content_with_strong_text).should == "<p>Hello <strong>strong</strong> world!</p>\n"
+      end
+      
+      it "allows to quote text" do
+        Post.to_html(content_with_quotes).should == "<p>Hello quoted text</p>\n\n<blockquote><p>This is quoted<br/>\n- Sir</p></blockquote>\n"
+      end
+      
       
     end
   end
