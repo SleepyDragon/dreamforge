@@ -1,0 +1,6 @@
+
+= form_for @post do |f|
+  = f.hidden_field :topic_id
+  = f.label :content, t('Post your message:')
+  = f.text_area :content
+  = f.submit "Post"

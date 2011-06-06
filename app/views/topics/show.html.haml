@@ -6,17 +6,22 @@
   %li= link_to @topic.forum.name, @topic.forum
   %li= @topic.title
   
+- if user_signed_in?
+  %p= "Welcome #{current_user.name}"
+- else
+  %a "login"
+  
+- flash.each do |key, value|
+  %div{:class => "flash #{key}"}
+    = value
   
 %table.posts
   - @posts.each do |post|
     %tr
-      %td
-        hallo
+      %td= post.user.name
       %td= raw post.to_html
 
-= current_user
-= user_signed_in?
 - if user_signed_in?
-  %textarea.new_post
-      
+  = render 'posts/create_form'
+  
 /= will_paginate @posts
