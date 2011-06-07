@@ -9,7 +9,7 @@ class PostsController < ApplicationController
       flash[:error] = t("There was an error.")
     end
     
-    redirect_to :controller => :topics, :action => :show, :id => @post.topic.id
+    redirect_to :controller => :topics, :action => :show, :id => @post.topic
     
   end
 
