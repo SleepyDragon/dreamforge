@@ -7,9 +7,9 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(params[:post])
     
     if @post.save
-      flash[:success] = t("Thank you for your post.")
+      flash[:success] = t('post.create.flash.success')
     else
-      flash[:error] = t("There was an error.")
+      flash[:error] = t('post.create.flash.error')
     end
     
     redirect_to :controller => :topics, :action => :show, :id => @post.topic

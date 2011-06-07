@@ -4,3 +4,11 @@
 en:
   community: "Community"
   topics: "Topics"
+  post:
+      self: "post"
+      create:
+          flash:
+              success: "Thank you for your post."
+              error: "There was an error."
+          label:
+              content: "Post your message:"
