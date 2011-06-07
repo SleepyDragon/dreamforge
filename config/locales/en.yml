@@ -12,3 +12,4 @@ en:
               error: "There was an error."
           label:
               content: "Post your message:"
+          submit: "Post"
