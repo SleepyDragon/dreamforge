@@ -21,6 +21,8 @@ group :development, :test do
   gem "autotest-fsevent" # Instead of polling your files all the time, wait for push notifications
   gem "autotest-growl" # autotests sends growl notifications 
   gem 'spork', '~> 0.9.0.rc' # make specs faster
+  gem 'factory_girl_rails'
+
 
   # 'hpricot' and 'ruby_parser' are needed to create views with devise.
   # We only need this while developing.
