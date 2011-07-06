@@ -4,12 +4,6 @@ describe PostsController do
   
   include DreamforgeSpecHelpers
   
-  before(:each) do
-    @user = User.new
-    
-    @post = Post.new
-    @post.stubs(:user => @user, :content => 'hello there!', :topic => Topic.new)
-  end
 
   describe "POST 'create'" do
     
