@@ -12,15 +12,15 @@ gem 'will_paginate', '~> 3.0.pre2'
 
 group :development, :test do
   gem 'yard'
-  gem 'rspec', '~> 2.5.0'
-  gem 'rspec-rails', '~> 2.5.0'
+  gem 'rspec', '~> 2.6.0'
+  gem 'rspec-rails', '~> 2.6.0'
   gem 'webrat' # Better Matchers for the View Specs
   gem 'syntax' # Highlighting in TextMate's RSpec Output
   gem "ZenTest", "~> 4.4.2"
   gem "autotest-rails", "~> 4.1.0"
   gem "autotest-fsevent" # Instead of polling your files all the time, wait for push notifications
   gem "autotest-growl" # autotests sends growl notifications 
-  gem 'spork', '~> 0.9.0.rc' # make specs faster
+  gem 'spork', '~> 0.9.0.rc9' # make specs faster
   # gem 'factory_girl_rails'
   gem 'mocha'
 
