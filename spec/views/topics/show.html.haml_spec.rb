@@ -1,25 +1,26 @@
 require 'spec_helper'
 
 describe "topics/show.html.haml" do
-  let(:user) do
-    stub_model(User, :name => "Peter Parker", :password => "dude")
-  end
   
   before(:each) do
+    @user = User.create! :name => "Peter Parker", :password => "somepassword", :email => "test@example.com"
+    
     @category = stub_model(Category, :name => "Our Test Category")
     @forum = stub_model(Forum, :name => "Our Test Forum", :category => @category)
     @posts = []    
     @topic = stub_model(Topic, :title => "Our Test Topic", :forum => @forum, :posts => @posts)
     
     13.times do |i|
-      @posts << stub_model(Post, :content => "Post number #{i}: **Strong**", :topic => @topic)
+      @posts << Post.create!(:content => "Post number #{i}: **Strong**", :topic => @topic, :user => @user)
     end
     
     assign(:topic, @topic)
     assign(:posts, @posts)
     
     assign(:user, nil)
-    @view.stub(:resource).and_return(user)
+    
+    # Necessary for devise:
+    @view.stub(:resource).and_return(@user)
     @view.stub(:resource_name).and_return('user')
     @view.stub(:devise_mapping).and_return(Devise.mappings[:user])
   end
@@ -74,16 +75,17 @@ describe "topics/show.html.haml" do
   context "logged-in permissions" do
     
     before(:each) do
-      assign(:user, user)
+      assign(:user, @user)
+      assign(:post, Post.new)
       
-      @view.stub!(:current_user).and_return(user)
+      @view.stub!(:current_user).and_return(@user)
       @view.stub!(:user_signed_in?).and_return(true)
       
       render
     end
     
     it "should enable you to write a new post" do
-      rendered.should have_selector('textarea.new_post')
+      rendered.should have_selector('form.new_post textarea')
     end
     
   end
