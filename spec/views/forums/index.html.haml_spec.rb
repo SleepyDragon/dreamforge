@@ -3,8 +3,8 @@ require 'spec_helper'
 describe "forums/index.html.haml" do
   
   before :each do
-    @first_forum = stub_model(Forum, :name => "First Forum", :subtitle => "My Subtitle")
-    @first_category = stub_model(Category, :name => "First Category", :subtitle => "My Subtitle", :forums => [@first_forum])
+    @first_forum = mock_model(Forum, :name => "First Forum", :subtitle => "My Subtitle")
+    @first_category = mock_model(Category, :name => "First Category", :subtitle => "My Subtitle", :forums => [@first_forum])
     
     assign( :categories, [@first_category] )
     render

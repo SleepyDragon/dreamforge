@@ -18,6 +18,8 @@ class User < ActiveRecord::Base
   
   validates :name, :presence => true,
                    :uniqueness => { :case_sensitive => false }
+                   
+  validates :email, :presence => true, :format => { :with => /\b[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b/i}
   
   def zombie?
     read_attribute(:zombie)
