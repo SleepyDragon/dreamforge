@@ -1,9 +1,0 @@
-require "autotest/growl"
-require 'autotest/fsevent'
-
-# Don't monitor those files, because they don't contain anything interesting
-Autotest.add_hook :initialize do |autotest|
-  %w{.git .svn .hg .DS_Store ._* vendor tmp log doc}.each do |exception|
-    autotest.add_exception(exception)
-  end
-end
