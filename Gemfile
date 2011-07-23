@@ -2,13 +2,14 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.1.0.rc4'
 
+# The assets:
 gem 'sass-rails', '~> 3.1.0.rc'
 gem 'haml-rails'
 gem 'coffee-script'
 gem 'jquery-rails'
 gem 'uglifier'
 
-gem 'sqlite3-ruby', :require => 'sqlite3'
+gem 'sqlite3-ruby', :require => 'sqlite3' # database, will later only be for dev and test
 
 gem 'devise' # Authentification
 
@@ -22,11 +23,17 @@ group :development, :test do
   
   gem 'webrat' # Better Matchers for the View Specs
   
-  gem 'autotest-rails', '~> 4.1.0'
-  gem 'autotest-fsevent' # Instead of polling your files all the time, wait for push notifications
-  gem 'autotest-growl' # autotests sends growl notifications 
-  
-  gem 'spork', '~> 0.9.0.rc9' # make specs faster
+  # Beware of the guard army!
+  gem 'guard'
+  gem 'rb-fsevent'
+  gem 'growl'
+  gem 'guard-bundler'
+  gem 'guard-rspec'
+  gem 'guard-livereload'
+  gem 'guard-pow'
+  gem 'guard-spork'
+  gem 'guard-yard', '~> 1.0.0'
+  # gem 'guard-minitest'
   
   # 'hpricot' and 'ruby_parser' are needed to create views with devise.
   # We only need this while developing.
