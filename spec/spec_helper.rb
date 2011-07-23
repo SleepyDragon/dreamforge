@@ -9,11 +9,8 @@ Spork.prefork do
   require File.expand_path("../../config/environment", __FILE__)
   require 'rspec/rails'
 
-  # Add Webrat
-  require "webrat"
-  Webrat.configure do |config|
-    config.mode = :rails
-  end
+  # Add Capybara
+  require "capybara/rspec"
 
   # Requires supporting ruby files with custom matchers and macros, etc,
   # in spec/support/ and its subdirectories.

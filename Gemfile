@@ -21,7 +21,7 @@ group :development, :test do
   gem 'rspec', '~> 2.6.0'
   gem 'rspec-rails', '~> 2.6.0'
   
-  gem 'webrat' # Better Matchers for the View Specs
+  gem 'capybara' # Better Matchers for the View Specs
   
   # Beware of the guard army!
   gem 'guard'
