@@ -52,7 +52,6 @@ GEM
       bcrypt-ruby (~> 2.1.2)
       orm_adapter (~> 0.0.3)
       warden (~> 1.0.3)
-    diff-lcs (1.1.2)
     em-websocket (0.3.0)
       addressable (>= 2.1.1)
       eventmachine (>= 0.12.9)
@@ -60,6 +59,7 @@ GEM
     eventmachine (0.12.10)
     execjs (1.2.0)
       multi_json (~> 1.0)
+    fabrication (1.0.1)
     ffi (1.0.9)
     growl (1.0.3)
     guard (0.5.1)
@@ -71,13 +71,10 @@ GEM
       em-websocket (>= 0.2.0)
       guard (>= 0.4.0)
       json (>= 1.5.1)
+    guard-minitest (0.4.0)
+      guard (~> 0.4)
     guard-pow (0.1.0)
       guard (>= 0.3.0)
-    guard-rspec (0.4.0)
-      guard (>= 0.4.0)
-    guard-spork (0.2.1)
-      guard (>= 0.2.2)
-      spork (>= 0.8.4)
     guard-yard (1.0.0)
       guard (>= 0.2.2)
       yard (>= 0.7.0)
@@ -132,19 +129,6 @@ GEM
     rb-fsevent (0.4.1)
     rdiscount (1.6.8)
     rdoc (3.8)
-    rspec (2.6.0)
-      rspec-core (~> 2.6.0)
-      rspec-expectations (~> 2.6.0)
-      rspec-mocks (~> 2.6.0)
-    rspec-core (2.6.4)
-    rspec-expectations (2.6.0)
-      diff-lcs (~> 1.1.2)
-    rspec-mocks (2.6.0)
-    rspec-rails (2.6.1)
-      actionpack (~> 3.0)
-      activesupport (~> 3.0)
-      railties (~> 3.0)
-      rspec (~> 2.6.0)
     ruby_parser (2.0.6)
       sexp_processor (~> 3.0)
     rubyzip (0.9.4)
@@ -160,7 +144,6 @@ GEM
       json_pure
       rubyzip
     sexp_processor (3.0.5)
-    spork (0.9.0.rc9)
     sprockets (2.0.0.beta.10)
       hike (~> 1.0)
       rack (~> 1.0)
@@ -189,13 +172,13 @@ DEPENDENCIES
   capybara
   coffee-script
   devise
+  fabrication
   growl
   guard
   guard-bundler
   guard-livereload
+  guard-minitest
   guard-pow
-  guard-rspec
-  guard-spork
   guard-yard (~> 1.0.0)
   haml-rails
   hpricot
@@ -203,8 +186,6 @@ DEPENDENCIES
   rails (= 3.1.0.rc4)
   rb-fsevent
   rdiscount
-  rspec (~> 2.6.0)
-  rspec-rails (~> 2.6.0)
   ruby_parser
   sass-rails (~> 3.1.0.rc)
   sqlite3-ruby

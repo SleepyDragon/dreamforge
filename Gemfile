@@ -18,22 +18,24 @@ gem 'rdiscount' # Markdown
 group :development, :test do
   gem 'yard'
   
-  gem 'rspec', '~> 2.6.0'
-  gem 'rspec-rails', '~> 2.6.0'
+  # gem 'rspec', '~> 2.6.0'
+  # gem 'rspec-rails', '~> 2.6.0'
   
   gem 'capybara' # Better Matchers for the View Specs
   
+  gem 'fabrication'
+  
   # Beware of the guard army!
   gem 'guard'
-  gem 'rb-fsevent'
   gem 'growl'
+  gem 'rb-fsevent'
   gem 'guard-bundler'
-  gem 'guard-rspec'
+  # gem 'guard-rspec'
   gem 'guard-livereload'
   gem 'guard-pow'
-  gem 'guard-spork'
+  # gem 'guard-spork' currently not used
   gem 'guard-yard', '~> 1.0.0'
-  # gem 'guard-minitest'
+  gem 'guard-minitest'
   
   # 'hpricot' and 'ruby_parser' are needed to create views with devise.
   # We only need this while developing.
