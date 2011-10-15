@@ -19,11 +19,10 @@ describe Topic do
   it "does destroy all dependent posts" do
     my_user = Fabricate :user, :name => "dependent_post_check", :email => "dude@me.com"
     topic_with_a_title_and_forum = Fabricate :topic
-    valid_post = Fabricate :post, :user => my_user
+    valid_post = Fabricate :post, :user => my_user, :topic => topic_with_a_title_and_forum
 
     Post.all.must_include valid_post
     topic_with_a_title_and_forum.destroy
-    topic_with_a_title_and_forum.must_be_nil
     Post.all.wont_include valid_post
   end
 end
