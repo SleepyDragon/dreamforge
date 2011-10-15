@@ -2,54 +2,49 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.1.0.rc8'
 
-# The assets:
-gem 'sass-rails', '~> 3.1.0.rc'
-gem 'haml-rails'
-gem 'coffee-script'
-gem 'jquery-rails'
-gem 'uglifier'
+# The Asset Pipeline
+gem 'sass-rails', '~> 3.1.0.rc.7'
+gem 'haml-rails', '~> 0.3'
+gem 'coffee-script', '~> 2.1'
+gem 'jquery-rails', '~> 1.0'
+gem 'uglifier', '~> 1.0'
 
-gem 'sqlite3-ruby', :require => 'sqlite3' # database, will later only be for dev and test
+# Database
+gem 'sqlite3-ruby', :require => 'sqlite3' # will later only be for dev and test
 
-gem 'devise' # Authentification
+# Authentification
+gem 'devise', '~> 1.4.8'
 
+# Other
 gem 'rdiscount' # Markdown
 
 group :development, :test do
   gem 'yard'
-  
-  # gem 'rspec', '~> 2.6.0'
-  # gem 'rspec-rails', '~> 2.6.0'
-  
-  gem 'capybara' # Better Matchers for the View Specs
-  
-  gem 'fabrication'
 
+  gem 'capybara' # Better Matchers for the View Specs
+  gem 'fabrication'
   gem 'database_cleaner', '0.6.7'
 
   # Beware of the guard army!
-  gem 'guard'
+  gem 'guard', '~> 0.8.4'
   gem 'growl'
   gem 'rb-fsevent'
-  gem 'guard-bundler'
-  # gem 'guard-rspec'
-  gem 'guard-livereload'
-  gem 'guard-pow'
-  # gem 'guard-spork' currently not used
+  gem 'guard-bundler', '~> 0.1.3'
+  gem 'guard-livereload', '~> 0.3.1'
+  gem 'guard-pow', '~> 0.2.1'
   gem 'guard-yard', '~> 1.0.0'
-  gem 'guard-minitest'
-  
+  gem 'guard-minitest', '~> 0.4.0'
+  # gem 'guard-spork' currently not used
+
   # 'hpricot' and 'ruby_parser' are needed to create views with devise.
   # We only need this while developing.
-  gem 'hpricot'
-  gem 'ruby_parser'
+  gem 'hpricot', '~> 0.8'
+  gem 'ruby_parser', '~> 2.3'
 end
 
 # currently not in use:
 
-# gem 'will_paginate', '~> 3.0.pre2' doesn't work in 3.1
-# use gem 'kaminari' instead?
-
+# gem 'will_paginate'
 # gem 'cancan'
 # gem 'syntax' # Highlighting in TextMate's RSpec Output
 # gem 'factory_girl_rails'
