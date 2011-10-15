@@ -1,11 +1,6 @@
 require 'spec_helper'
 
 describe User do
-  #let(:user_without_email) { User.new(:name => "Nickname", :password => "foobar", :password_confirmation => "foobar") }
-  #let(:user_without_password) { User.new(:name => "Nickname", :email => "foo@example.com", :password_confirmation => "foobar") }
-  #let(:user_without_correct_password_confirmation) { User.new(:name => "Nickname", :email => "foo@example.com", :password => "foobar", :password_confirmation => "baz") }
-  #let(:user_without_name) { User.new(:email => "foo@example.com", :password => "foobar", :password_confirmation => "foobar") }
-  #let(:user_with_all_information) { User.new(:name => "Nickname", :email => "foo@example.com", :password => "foobar", :password_confirmation => "foobar") }
 
   it "requires a nickname" do
     user_without_name = Fabricate.build :user, :name => nil

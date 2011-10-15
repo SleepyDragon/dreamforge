@@ -38,10 +38,8 @@ describe Ability do
   end
   
   it "should serialize the actions hash" do
-    ability = Fabricate.build(:ability)
-    ability.actions = { shoot: 'BOOM!', punch: 'SMACK!' }
+    ability = Fabricate :ability, actions: { shoot: 'BOOM!', punch: 'SMACK!' }
     
-    ability.save!
     ability.actions.keys.must_include :shoot
     ability.actions.values.must_include 'BOOM!'
     ability.actions.keys.must_include :punch
