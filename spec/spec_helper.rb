@@ -16,6 +16,14 @@ module MiniTest::Assertions
   end
 end
 
+# Database cleaner.
+DatabaseCleaner.strategy = :truncation
+class MiniTest::Spec
+  before :each do
+    DatabaseCleaner.clean
+  end
+end
+
 # Define the assertions as expectations
 module MiniTest::Expectations
   infect_an_assertion :assert_valid, :must_be_valid
