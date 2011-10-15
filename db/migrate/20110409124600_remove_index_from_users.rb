@@ -1,6 +1,6 @@
 class RemoveIndexFromUsers < ActiveRecord::Migration
   def self.up
-    remove_index :users, :name => :email
+    remove_index :users, :email
   end
 
   def self.down
