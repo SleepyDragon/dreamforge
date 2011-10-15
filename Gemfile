@@ -24,7 +24,9 @@ group :development, :test do
   gem 'capybara' # Better Matchers for the View Specs
   
   gem 'fabrication'
-  
+
+  gem 'database_cleaner', '0.6.7'
+
   # Beware of the guard army!
   gem 'guard'
   gem 'growl'
