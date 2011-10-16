@@ -1,4 +1,4 @@
 Fabricator(:topic) do
   title "my name"
-  forum
+  forum!
 end
