@@ -19,6 +19,18 @@ describe 'Topic integration' do
       end
     end
     
+    it "should display parent forum and category as breadcrumb" do
+      within 'ol.breadcrumbs' do
+        page.must_have_content @topic.title
+        page.must_have_content @topic.forum.name
+        page.must_have_content @topic.forum.category.name
+        page.must_have_content I18n.t('community')
+
+        page.must_have_link_to forums_path
+        page.must_have_link_to forum_path(@topic.forum)
+      end
+    end
+    
     describe "not logged in" do
       it "will not greet the user" do
         within '#userbox' do
