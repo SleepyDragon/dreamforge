@@ -59,6 +59,35 @@ describe 'Topic integration' do
       end
     end
     
+    describe "Reading and writing Posts" do
+      
+      it "should have a table containing all posts" do
+        @topic.posts << Fabricate(:post, topic: @topic, user: Fabricate(:user))
+        @topic.posts << Fabricate(:post, topic: @topic, 
+                                         content: "Lorem ipsum...", 
+                                         user: Fabricate(:user, name: "Unknown", 
+                                                                email: "unknown@example.com"))
+
+        visit topic_path(@topic) # We need to revisit the page since we altered @topic
+        
+        page.must_have_selector 'table.posts'
+                
+        post_table = all("table.posts tr")
+
+        post_table.each_index do |post_table_index|
+          post_table_row = post_table[post_table_index]
+          post = @topic.posts[post_table_index]
+
+          post_table_row.must_have_content post.content
+          post_table_row.must_have_content post.user.name
+        end
+        
+        post_table.length.must_equal 2
+        @topic.posts.count.must_equal 2
+      end
+      
+    end
+    
   end
 
 end
