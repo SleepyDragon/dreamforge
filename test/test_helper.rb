@@ -1,0 +1,50 @@
+require 'spork'
+
+Spork.prefork do
+
+  # Environment.
+  ENV["RAILS_ENV"] = "test"
+  require File.expand_path('../../config/environment', __FILE__)
+
+  # MiniTest and Capybara.
+  require 'minitest/autorun'
+  require 'capybara/rails'
+
+  # Require ruby files in support dir.
+  Dir[File.expand_path('test/support/*.rb')].each { |file| require file }
+
+  # Database cleaner.
+  DatabaseCleaner.strategy = :truncation
+  class MiniTest::Spec
+    before :each do
+      DatabaseCleaner.clean
+    end
+  end
+
+  module MiniTest::Assertions
+    def assert_valid(obj, msg = nil)
+      msg = message(msg) { "Expected #{mu_pp(obj)} to be valid" }
+      assert obj.valid?, msg
+    end
+
+    def refute_valid(obj, msg = nil)
+      msg = message(msg) { "Expected #{mu_pp(obj)} to be invalid" }
+      assert !obj.valid?, msg
+    end
+  end
+
+  # Define the assertions as expectations
+  module MiniTest::Expectations
+    infect_an_assertion :assert_valid, :must_be_valid
+    infect_an_assertion :refute_valid, :wont_be_valid
+  end
+
+  # Add the expectations to all objects
+  class Object
+    include MiniTest::Expectations
+  end
+
+end
+
+# require "minitest/autorun"
+# require "minitest/pride"

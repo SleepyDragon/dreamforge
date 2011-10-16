@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Profession do
   
   it "should be valid" do

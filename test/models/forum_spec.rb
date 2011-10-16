@@ -1,5 +1,3 @@
-require "spec_helper"
-
 describe Forum do
     it "does validate a forum with all information" do
       forum_with_all_information = Fabricate.build(:forum)

@@ -1,5 +1,3 @@
-require "spec_helper"
-
 describe Topic do
   it "does require a title" do
     topic_without_a_title = Fabricate.build :topic, :title => nil

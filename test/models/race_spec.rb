@@ -1,5 +1,3 @@
-require "spec_helper"
-
 describe Race do
   it "should have a name" do
     race_without_a_name = Fabricate.build(:race, :name => nil)

@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Rule do
   
   it "should be valid" do

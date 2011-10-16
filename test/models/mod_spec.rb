@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Mod do 
   
   it "should be valid" do

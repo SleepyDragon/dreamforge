@@ -1,5 +1,3 @@
-require "spec_helper"
-
 describe Category do
   it "does validate a category with all information" do
     category_with_all_information = Fabricate.build(:category)

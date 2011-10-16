@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Post do
   it "does require content" do
     post_without_content = Fabricate.build :post, :content => nil
