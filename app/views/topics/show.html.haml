@@ -1,16 +1,16 @@
 %h2= @topic.title
 
 %ol.breadcrumbs
-  %li= link_to t(:community), '/forums'
+  %li= link_to t(:community), forums_path
   %li= @topic.forum.category.name
   %li= link_to @topic.forum.name, @topic.forum
   %li= @topic.title
   
 #userbox
   - if user_signed_in?
-    %p= "Welcome #{current_user.name}"
+    %p= t('user.welcome', username: current_user.name)
   - else
-    %a "login"
+    = link_to t('user.login'), user_session_path
   
 - flash.each do |key, value|
   %div{:class => "flash #{key}"}

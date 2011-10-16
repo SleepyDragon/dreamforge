@@ -22,14 +22,14 @@ describe 'Topic integration' do
     describe "not logged in" do
       it "will not greet the user" do
         within '#userbox' do
-          page.wont_have_content "Welcome "
+          page.wont_have_content I18n.t('user.welcome', username: "")
         end
       end
       
       it "will give you the possibility to log in" do
         within '#userbox' do
           page.must_have_selector 'a'
-          page.must_have_content 'login'
+          page.must_have_content I18n.t('user.login')
         end
       end
     end
@@ -42,7 +42,7 @@ describe 'Topic integration' do
       
       it "will greet the user" do
         within '#userbox' do
-          page.must_have_content "Welcome #{@user.name}"
+          page.must_have_content I18n.t('user.welcome', username: @user.name)
         end
       end
     end
@@ -51,19 +51,3 @@ describe 'Topic integration' do
 
 end
 
-
-# 
-# describe "GET 'show'" do
-#   before :each do
-#     @topic = stub_model(Topic, :title => "Topic")
-#     
-#     Topic.stub!(:find).and_return(@topic)
-#   end
-#   
-#   it "should be succesful" do
-#     
-#     get :show, :id => 1
-#     response.should be_success
-#     
-#   end
-# end

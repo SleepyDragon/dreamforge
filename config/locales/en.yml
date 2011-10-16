@@ -3,6 +3,9 @@
 
 en:
   community: "Community"
+  user:
+      welcome: "Welcome %{username}"
+      login: "login"
   topics: "Topics"
   post:
       self: "post"
