@@ -22,8 +22,9 @@ gem 'rdiscount' # Markdown
 group :development, :test do
   gem 'yard'
 
-  gem 'capybara' # Better Matchers for the View Specs
-  gem 'fabrication'
+  gem 'capybara', '~> 1.1.1' # Better Matchers for the View Specs
+  gem 'capybara_minitest_spec', '~> 0.2.1'
+  gem 'fabrication', '~> 1.2.0'
   gem 'database_cleaner', '0.6.7'
 
   gem 'spork', '> 0.9.0.rc'
