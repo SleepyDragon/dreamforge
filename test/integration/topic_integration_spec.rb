@@ -36,13 +36,11 @@ describe 'Topic integration' do
     
     describe "logged in" do
       before do
-        @user = Fabricate(:user)
+        @user = sign_in
+        visit topic_path(@topic)
       end
       
       it "will greet the user" do
-        sign_in @user
-        visit topic_path(@topic)
-        
         within '#userbox' do
           page.must_have_content "Welcome #{@user.name}"
         end
