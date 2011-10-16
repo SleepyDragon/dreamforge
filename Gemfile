@@ -3,6 +3,7 @@ source 'http://rubygems.org'
 gem 'rails', '3.1.0.rc8'
 
 # The Asset Pipeline
+gem 'tilt', '~> 1.3.3'
 gem 'sass-rails', '~> 3.1.0.rc.7'
 gem 'haml-rails', '~> 0.3'
 gem 'coffee-script', '~> 2.1'
@@ -25,6 +26,9 @@ group :development, :test do
   gem 'fabrication'
   gem 'database_cleaner', '0.6.7'
 
+  gem 'spork', '> 0.9.0.rc'
+  gem 'spork-testunit', '0.0.5'
+
   # Beware of the guard army!
   gem 'guard', '~> 0.8.4'
   gem 'growl'
@@ -34,7 +38,7 @@ group :development, :test do
   gem 'guard-pow', '~> 0.2.1'
   gem 'guard-yard', '~> 1.0.0'
   gem 'guard-minitest', '~> 0.4.0'
-  # gem 'guard-spork' currently not used
+  gem 'guard-spork', '~> 0.3.1'
 
   # 'hpricot' and 'ruby_parser' are needed to create views with devise.
   # We only need this while developing.
