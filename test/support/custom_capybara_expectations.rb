@@ -5,10 +5,14 @@ class Capybara::Session
       has_content? message
     end
   end
-  
+
+  def has_link_to?(path)
+    has_selector? :xpath, "//a[@href='#{path}']"
+  end
 end
 
 CapybaraMiniTestSpec::Matcher.new(:has_flash_message?)
+CapybaraMiniTestSpec::Matcher.new(:has_link_to?)
 
 
 
