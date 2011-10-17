@@ -1,5 +1,8 @@
 source 'http://rubygems.org'
 
+# You can find information on our Gem-Choices in our [wiki](https://github.com/SleepyDragon/dreamforge/wiki/Gems)
+
+# Rails Version
 gem 'rails', '3.1.0.rc8'
 
 # The Asset Pipeline
@@ -11,7 +14,7 @@ gem 'jquery-rails', '~> 1.0'
 gem 'uglifier', '~> 1.0'
 
 # Database
-gem 'sqlite3-ruby', :require => 'sqlite3' # will later only be for dev and test
+gem 'sqlite3-ruby', :require => 'sqlite3' # will later only be for dev and test, then be moved accordingly
 
 # Authentification
 gem 'devise', '~> 1.4.8'
@@ -22,7 +25,7 @@ gem 'rdiscount' # Markdown
 group :development, :test do
   gem 'yard'
 
-  gem 'capybara', '~> 1.1.1' # Better Matchers for the View Specs
+  gem 'capybara', '~> 1.1.1'
   gem 'capybara_minitest_spec', '~> 0.2.1'
   gem 'fabrication', '~> 1.2.0'
   gem 'database_cleaner', '0.6.7'
@@ -52,7 +55,4 @@ end
 # gem 'will_paginate'
 # gem 'cancan'
 # gem 'syntax' # Highlighting in TextMate's RSpec Output
-# gem 'factory_girl_rails'
-# gem 'mocha'
 # gem 'formtastic', '~> 1.1.0'
-# gem 'ZenTest', '~> 4.4.2'
