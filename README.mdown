@@ -17,8 +17,8 @@ Dreamforge is developed with pure TDD using MiniTest. Furthermore `guard` and `r
 
 ## Contributors
 
-* Tobias Eilert (EinLama): Project Founder, Concept, Development
-* Lucas Dohmen (moonglum): Project Founder, Concept, Development
+* Tobias Eilert ([EinLama](https://github.com/EinLama)): Project Founder, Concept, Development
+* Lucas Dohmen ([moonglum](https://github.com/moonglum)): Project Founder, Concept, Development
 
 ## License
 
