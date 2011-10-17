@@ -15,6 +15,11 @@ Dreamforge is developed with pure TDD using MiniTest. Furthermore `guard` and `r
 * [Wiki](https://github.com/SleepyDragon/dreamforge/wiki)
 * [RDoc.info Page](http://rubydoc.info/github/SleepyDragon/dreamforge/)
 
+## Contributors
+
+* Tobias Eilert (EinLama): Project Founder, Concept, Development
+* Lucas Dohmen (moonglum): Project Founder, Concept, Development
+
 ## License
 
 Dreamforge is released under the MIT license.
