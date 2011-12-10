@@ -4,6 +4,10 @@ Spork.prefork do
 
   # Environment.
   ENV["RAILS_ENV"] = "test"
+
+  # Fixing the spork/devise problem
+  Spork.trap_method(Rails::Application::RoutesReloader, :reload!)
+
   require File.expand_path('../../config/environment', __FILE__)
 
   # MiniTest and Capybara.
@@ -32,4 +36,5 @@ end
 
 Spork.each_run do
   Rails.application.reload_routes!
+  Fabrication.clear_definitions
 end
