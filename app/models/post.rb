@@ -9,6 +9,7 @@ class Post < ActiveRecord::Base
 
   belongs_to :topic
   belongs_to :user
+  delegate :name, :to => :user, :prefix => true
 
   # @return [Text] post formatted as HTML.
   def to_html

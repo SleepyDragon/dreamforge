@@ -6,6 +6,8 @@ class Topic < ActiveRecord::Base
   validates_presence_of :forum
 
   belongs_to :forum
+  delegate :name, :to => :forum, :prefix => true
+
   has_many :posts, :dependent => :destroy
 
   has_one :gist

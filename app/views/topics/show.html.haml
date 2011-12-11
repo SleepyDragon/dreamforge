@@ -2,8 +2,8 @@
 
 %ol.breadcrumbs
   %li= link_to t(:community), forums_path
-  %li= @topic.forum.category.name
-  %li= link_to @topic.forum.name, @topic.forum
+  %li= @topic.forum.category_name
+  %li= link_to @topic.forum_name, @topic.forum
   %li= @topic.title
 
 #userbox
@@ -19,7 +19,7 @@
 %table.posts
   - @posts.each do |post|
     %tr
-      %td= post.user.name
+      %td= post.user_name
       %td= raw post.to_html
 
 - if user_signed_in?

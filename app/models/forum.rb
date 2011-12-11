@@ -8,5 +8,6 @@ class Forum < ActiveRecord::Base
   validates_presence_of :category
 
   belongs_to :category
+  delegate :name, :to => :category, :prefix => true
   has_many :topics, :dependent => :destroy
 end
