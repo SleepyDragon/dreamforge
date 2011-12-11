@@ -5,17 +5,17 @@
   %li= @topic.forum.category.name
   %li= link_to @topic.forum.name, @topic.forum
   %li= @topic.title
-  
+
 #userbox
   - if user_signed_in?
     %p= t('user.welcome', username: current_user.name)
   - else
     = link_to t('user.login'), user_session_path
-  
+
 - flash.each do |key, value|
   %div{:class => "flash #{key}"}
     = value
-  
+
 %table.posts
   - @posts.each do |post|
     %tr
@@ -24,5 +24,5 @@
 
 - if user_signed_in?
   = render 'posts/post'
-  
+
 /= will_paginate @posts

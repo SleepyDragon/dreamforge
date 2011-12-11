@@ -6,7 +6,7 @@
 class Forum < ActiveRecord::Base
   validates_presence_of :name
   validates_presence_of :category
-  
+
   belongs_to :category
   has_many :topics, :dependent => :destroy
 end
