@@ -3,13 +3,13 @@ source 'http://rubygems.org'
 # You can find information on our Gem-Choices in our [wiki](https://github.com/SleepyDragon/dreamforge/wiki/Gems)
 
 # Rails Version
-gem 'rails', '3.1.0.rc8'
+gem "rails", "~> 3.1.3"
 
 # The Asset Pipeline
 gem 'tilt', '~> 1.3.3'
-gem 'sass-rails', '~> 3.1.0.rc.7'
+gem 'sass-rails', '~> 3.1.5'
 gem 'haml-rails', '~> 0.3'
-gem 'coffee-script', '~> 2.1'
+gem 'coffee-script', '~> 2.2'
 gem 'jquery-rails', '~> 1.0'
 gem 'uglifier', '~> 1.0'
 
