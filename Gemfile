@@ -17,7 +17,7 @@ gem 'uglifier', '~> 1.0'
 gem 'sqlite3-ruby', :require => 'sqlite3' # will later only be for dev and test, then be moved accordingly
 
 # Authentification
-gem 'devise', '~> 1.4.8'
+gem 'devise', '~> 1.5.2'
 
 # Other
 gem 'rdiscount' # Markdown
@@ -28,10 +28,10 @@ group :development, :test do
   gem 'capybara', '~> 1.1.1'
   gem 'capybara_minitest_spec', '~> 0.2.1'
   gem 'fabrication', '~> 1.2.0'
-  gem 'database_cleaner', '0.6.7'
+  gem 'database_cleaner', '~> 0.7'
 
   gem 'spork', '> 0.9.0.rc'
-  gem 'spork-testunit', '0.0.5'
+  gem 'spork-testunit', '0.0.7'
 
   # Beware of the guard army!
   gem 'guard', '~> 0.8.4'
@@ -42,7 +42,7 @@ group :development, :test do
   gem 'guard-pow', '~> 0.2.1'
   gem 'guard-yard', '~> 1.0.0'
   gem 'guard-minitest', '~> 0.4.0'
-  gem 'guard-spork', '~> 0.3.1'
+  gem 'guard-spork', '~> 0.4.0'
 
   # 'hpricot' and 'ruby_parser' are needed to create views with devise.
   # We only need this while developing.
