@@ -15,6 +15,10 @@ Dreamforge is developed with pure TDD using MiniTest. Furthermore `guard` and `r
 * [Wiki](https://github.com/SleepyDragon/dreamforge/wiki)
 * [RDoc.info Page](http://rubydoc.info/github/SleepyDragon/dreamforge/)
 
+## Status
+
+![Gem Dependcy Status](https://gemnasium.com/SleepyDragon/dreamforge.png?travis)
+
 ## Contributors
 
 * Tobias Eilert ([EinLama](https://github.com/EinLama)): Project Founder, Concept, Development
