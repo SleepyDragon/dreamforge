@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110419191316) do
+ActiveRecord::Schema.define(:version => 20111211163149) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(:version => 20110419191316) do
     t.integer  "category_id"
   end
 
+  add_index "forums", ["category_id"], :name => "index_forums_on_category_id"
+
   create_table "gists", :force => true do |t|
     t.string   "type"
     t.string   "name"
@@ -39,6 +41,8 @@ ActiveRecord::Schema.define(:version => 20110419191316) do
     t.integer  "topic_id"
   end
 
+  add_index "gists", ["topic_id"], :name => "index_gists_on_topic_id"
+
   create_table "posts", :force => true do |t|
     t.text     "content"
     t.datetime "created_at"
@@ -47,6 +51,9 @@ ActiveRecord::Schema.define(:version => 20110419191316) do
     t.integer  "user_id"
   end
 
+  add_index "posts", ["topic_id"], :name => "index_posts_on_topic_id"
+  add_index "posts", ["user_id"], :name => "index_posts_on_user_id"
+
   create_table "topics", :force => true do |t|
     t.string   "title"
     t.datetime "created_at"
@@ -54,9 +61,12 @@ ActiveRecord::Schema.define(:version => 20110419191316) do
     t.integer  "forum_id"
   end
 
+  add_index "topics", ["forum_id"], :name => "index_topics_on_forum_id"
+
   create_table "users", :force => true do |t|
     t.string   "email",                               :default => ""
     t.string   "encrypted_password",   :limit => 128, :default => "",    :null => false
+    t.string   "password_salt",                       :default => "",    :null => false
     t.string   "reset_password_token"
     t.string   "remember_token"
     t.datetime "remember_created_at"
@@ -66,6 +76,7 @@ ActiveRecord::Schema.define(:version => 20110419191316) do
     t.boolean  "zombie",                              :default => false
   end
 
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
 end
