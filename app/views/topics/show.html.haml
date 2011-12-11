@@ -23,6 +23,6 @@
       %td= raw post.to_html
 
 - if user_signed_in?
-  = render 'posts/post'
+  = render @post
 
 /= will_paginate @posts
