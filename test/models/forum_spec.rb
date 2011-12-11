@@ -21,9 +21,10 @@ describe Forum do
 
     it "does destroy all dependend topics" do
       forum = Fabricate(:forum)
+      forum_id = forum.id
       forum.topics.each { |topic| topic.save }
-      Topic.all.wont_be_empty
+      Topic.where(:forum_id => forum_id).wont_be_empty
       forum.destroy
-      Topic.all.must_be_empty
+      Topic.where(:forum_id => forum_id).must_be_empty
     end
 end
